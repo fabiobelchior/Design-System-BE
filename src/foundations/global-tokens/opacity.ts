@@ -1,16 +1,12 @@
 export const opacity = {
-  0: 0,
-  5: 0.05,
-  10: 0.1,
-  20: 0.2,
-  30: 0.3,
-  40: 0.4,
-  50: 0.5,
-  60: 0.6,
-  70: 0.7,
-  80: 0.8,
-  90: 0.9,
-  100: 1,
+  // White variations
+  white60: 'rgba(255, 255, 255, 0.6)',
+  white75: 'rgba(255, 255, 255, 0.75)',
+  white30: 'rgba(255, 255, 255, 0.3)',
+
+  // Gray-800 variations
+  gray800_40: 'rgba(39, 50, 64, 0.4)',
+  gray800_70: 'rgba(39, 50, 64, 0.7)',
 } as const;
 
 export type OpacityToken = keyof typeof opacity;

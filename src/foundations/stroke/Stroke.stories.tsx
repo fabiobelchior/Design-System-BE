@@ -1,16 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { radius } from '../global-tokens';
+import { stroke } from '../global-tokens';
 
 const usageMap: Record<string, string> = {
-  sm: 'Tags',
-  md: 'CTAs, Cards, Modais, Fotos',
+  thin: 'Dividers, Bordar de cards, Bordas de inputs, Botoes secundarios e terciarios, Radio buttons, Checkboxes',
 };
 
-const RadiusPage = () => (
+const StrokePage = () => (
   <div style={{ fontFamily: 'var(--font-family-primary, Inter, sans-serif)' }}>
-    <h2 style={{ marginBottom: '8px', color: '#273240' }}>Corner Radius</h2>
+    <h2 style={{ marginBottom: '8px', color: '#273240' }}>Stroke</h2>
     <p style={{ color: '#616161', marginBottom: '32px' }}>
-      Padronizacao e utilizacao dos corner radius no design system.
+      Padronizacao e utilizacao dos strokes no design system.
     </p>
 
     <div
@@ -20,24 +19,38 @@ const RadiusPage = () => (
         gap: '32px',
       }}
     >
-      {Object.entries(radius).map(([name, value]) => (
+      {Object.entries(stroke).map(([name, value]) => (
         <div key={name}>
           <div
             style={{
               width: '120px',
               height: '120px',
-              border: '2px solid #047FE4',
-              borderRadius: value,
+              border: '1px solid #E6E6E6',
+              borderRadius: '8px',
               margin: '0 auto 16px',
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '18px',
-              fontWeight: 600,
-              color: '#273240',
+              gap: '12px',
             }}
           >
-            {value}
+            <div
+              style={{
+                width: '80px',
+                height: 0,
+                borderTop: `${value} solid #273240`,
+              }}
+            />
+            <span
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: '#273240',
+              }}
+            >
+              {value}
+            </span>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ fontWeight: 600, fontSize: '14px', color: '#273240' }}>
@@ -50,7 +63,7 @@ const RadiusPage = () => (
                 fontFamily: 'monospace',
               }}
             >
-              --radius-{name}
+              --stroke-{name}
             </div>
             <div style={{ fontSize: '12px', color: '#616161', marginTop: '4px' }}>
               {usageMap[name]}
@@ -63,8 +76,8 @@ const RadiusPage = () => (
 );
 
 const meta: Meta = {
-  title: 'Foundations/Radius',
-  component: RadiusPage,
+  title: 'Foundations/Stroke',
+  component: StrokePage,
 };
 
 export default meta;

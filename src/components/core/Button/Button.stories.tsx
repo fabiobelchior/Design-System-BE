@@ -4,6 +4,15 @@ import { Button } from './Button';
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Botao utilizado para acoes principais e secundarias. Suporta diferentes variantes, tamanhos, icones e estado de loading.',
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
