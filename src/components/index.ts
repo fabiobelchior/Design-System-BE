@@ -4,6 +4,9 @@ export type { AlertProps, AlertVariant } from './core/Alert';
 export { Button } from './core/Button/Button';
 export type { ButtonProps } from './core/Button/Button.types';
 
+export { Input } from './core/Input';
+export type { InputProps } from './core/Input';
+
 export { Icon } from './core/Icon';
 export type { IconProps, IconName } from './core/Icon';
 export { iconNames } from './core/Icon';
