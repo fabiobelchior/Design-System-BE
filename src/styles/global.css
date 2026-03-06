@@ -1,7 +1,7 @@
 :root {
   /* Colors - Brand (Whitelabel) */
-  /* Hover state: use filter brightness(0.9) on brand-primary */
   --color-brand-primary: #FEC437;
+  --color-brand-primary-dark: #E6B132;
 
   /* Colors - Neutral */
   --color-white: #FFFFFF;

@@ -17,12 +17,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    const showDots = loading && variant !== 'link';
+
     const classNames = [
       styles.button,
       styles[variant],
       styles[size],
       fullWidth ? styles.fullWidth : '',
-      loading ? styles.loading : '',
+      showDots ? styles.loading : '',
       className ?? '',
     ]
       .filter(Boolean)
@@ -32,33 +34,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={classNames}
-        disabled={disabled || loading}
+        disabled={disabled}
+        aria-disabled={disabled || loading}
+        aria-busy={loading}
         {...rest}
       >
-        {loading && (
-          <span className={styles.spinner} aria-hidden="true">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                cx="8"
-                cy="8"
-                r="6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeDasharray="28"
-                strokeDashoffset="8"
-              />
-            </svg>
-          </span>
+        {showDots ? (
+          <span className={styles.dots} aria-hidden="true" />
+        ) : (
+          <>
+            {icon && <span className={styles.icon}>{icon}</span>}
+            <span className={styles.label}>{children}</span>
+          </>
         )}
-        {icon && !loading && <span className={styles.icon}>{icon}</span>}
-        <span className={styles.label}>{children}</span>
       </button>
     );
   },

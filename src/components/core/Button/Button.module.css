@@ -3,18 +3,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-8);
+  gap: 10px;
   border: none;
   cursor: pointer;
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-20);
   border-radius: var(--radius-md);
   transition:
     background-color 150ms ease,
     color 150ms ease,
-    box-shadow 150ms ease,
-    opacity 150ms ease;
+    box-shadow 150ms ease;
   white-space: nowrap;
   text-decoration: none;
 }
@@ -26,44 +25,50 @@
 
 .button:disabled {
   cursor: not-allowed;
-  opacity: 0.4;
 }
 
 /* Sizes */
 .small {
-  padding: var(--spacing-4) var(--spacing-12);
+  padding: var(--spacing-8) var(--spacing-12);
   font-size: var(--font-size-13);
-  height: 32px;
+  height: 36px;
 }
 
 .medium {
-  padding: var(--spacing-8) var(--spacing-16);
+  padding: 14px var(--spacing-16);
   font-size: var(--font-size-14);
-  height: 40px;
-}
-
-.large {
-  padding: var(--spacing-12) var(--spacing-24);
-  font-size: var(--font-size-16);
   height: 48px;
 }
 
-/* Variants */
+.large {
+  padding: var(--spacing-16) var(--spacing-24);
+  font-size: var(--font-size-16);
+  height: 56px;
+}
+
+/* Primary */
 .primary {
   background-color: var(--color-brand-primary);
-  color: var(--color-gray-800);
+  color: var(--color-white);
 }
 
 .primary:hover:not(:disabled) {
-  filter: brightness(0.9);
+  background-color: var(--color-brand-primary-dark);
 }
 
 .primary:active:not(:disabled) {
-  filter: brightness(0.85);
+  background-color: var(--color-brand-primary-dark);
+  filter: brightness(0.95);
 }
 
+.primary:disabled {
+  background-color: var(--color-gray-300);
+  color: var(--color-white);
+}
+
+/* Secondary */
 .secondary {
-  background-color: transparent;
+  background-color: var(--color-white);
   color: var(--color-gray-800);
   border: var(--stroke-thin) solid var(--color-gray-300);
 }
@@ -73,12 +78,20 @@
 }
 
 .secondary:active:not(:disabled) {
-  background-color: var(--color-gray-200);
+  background-color: var(--color-gray-100);
 }
 
+.secondary:disabled {
+  background-color: var(--color-gray-300);
+  color: var(--color-white);
+  border-color: var(--color-gray-300);
+}
+
+/* Tertiary */
 .tertiary {
-  background-color: transparent;
-  color: var(--color-gray-800);
+  background-color: var(--color-white);
+  color: var(--color-info-bg);
+  border: var(--stroke-thin) solid var(--color-gray-300);
 }
 
 .tertiary:hover:not(:disabled) {
@@ -86,16 +99,23 @@
 }
 
 .tertiary:active:not(:disabled) {
-  background-color: var(--color-gray-200);
+  background-color: var(--color-gray-100);
 }
 
+.tertiary:disabled {
+  background-color: var(--color-gray-300);
+  color: var(--color-white);
+  border-color: var(--color-gray-300);
+}
+
+/* Link */
 .link {
   background-color: transparent;
-  color: var(--color-info-500);
+  color: var(--color-info-bg);
   padding-left: 0;
   padding-right: 0;
   height: auto;
-  border-radius: 0;
+  border-radius: var(--radius-sm);
 }
 
 .link:hover:not(:disabled) {
@@ -103,7 +123,11 @@
 }
 
 .link:active:not(:disabled) {
-  color: var(--color-info-bg);
+  text-decoration: underline;
+}
+
+.link:disabled {
+  color: #d3d3d3;
 }
 
 /* Full Width */
@@ -126,17 +150,25 @@
 
 /* Loading */
 .loading {
-  position: relative;
+  pointer-events: none;
+  cursor: default;
 }
 
-.spinner {
-  display: inline-flex;
-  align-items: center;
-  animation: spin 0.8s linear infinite;
+/* Loading dots */
+.dots {
+  width: 40px;
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(circle closest-side, currentColor 90%, transparent);
+  background:
+    var(--_g) 0% 50%,
+    var(--_g) 50% 50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 100%;
+  animation: dots 1.3s infinite linear;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes dots {
+  33% { background-size: calc(100% / 3) 0%, calc(100% / 3) 100%, calc(100% / 3) 100%; }
+  50% { background-size: calc(100% / 3) 100%, calc(100% / 3) 0%, calc(100% / 3) 100%; }
+  66% { background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 0%; }
 }
