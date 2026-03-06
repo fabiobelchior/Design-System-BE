@@ -10,6 +10,10 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
   ],
   framework: '@storybook/react-vite',
+  viteFinal: (config) => {
+    config.base = process.env.GITHUB_ACTIONS ? '/Design-System-BE/' : '/';
+    return config;
+  },
 };
 
 export default config;
