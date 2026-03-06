@@ -86,8 +86,8 @@
 
 /* Native input */
 .input {
-  display: none;
   width: 100%;
+  height: 0;
   border: none;
   outline: none;
   padding: 0;
@@ -101,10 +101,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  opacity: 0;
+  transition: height 150ms ease, opacity 150ms ease;
 }
 
 .input.visible {
-  display: block;
+  height: 20px;
+  opacity: 1;
 }
 
 .input::placeholder {
